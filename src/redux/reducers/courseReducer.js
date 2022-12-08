@@ -1,9 +1,19 @@
+import { GET_CONTENT } from "../actionTypes/actionTypes";
+
 const initialState = {
-    test: 'TEST',
+    courses: [],
 };
 
 const courseReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case GET_CONTENT:
+            return {
+                ...state,
+                courses: action.payload,
+            }
+        default:
+            return state;
+    }
 };
 
 export default courseReducer;

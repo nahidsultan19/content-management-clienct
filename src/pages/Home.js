@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import CourseCard from '../components/CourseCard';
+import { fetchCourseData } from '../redux/thunk/courses/fetchCourses';
+
+
 
 const Home = () => {
-    const [courses, setCourses] = useState([]);
+    // const [courses, setCourses] = useState([]);
+    const courses = useSelector((state) => state.courses);
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
-            .then(res => res.json())
-            .then(data => setCourses(data))
-    }, []);
+        dispatch(fetchCourseData())
+    }, [dispatch]);
 
-    const state = useSelector((state) => state);
-    console.log(state);
 
     return (
-        <div className='px-16'>
-            {courses.map(course => console.log(course))}
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl gap-14 mx-auto my-10'>
+            {courses.map(course => <CourseCard key={course._id} course={course} />)}
         </div>
     );
 };
