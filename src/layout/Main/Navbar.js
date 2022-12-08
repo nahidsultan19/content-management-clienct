@@ -9,9 +9,9 @@ const Navbar = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link>Home</Link></li>
+                    <li><Link to='/'>Home</Link></li>
                     <li>
-                        <Link>About</Link>
+                        <Link to='/about'>About</Link>
                     </li>
                     <li><Link>Reading</Link></li>
                 </ul>
