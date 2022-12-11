@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BsFillCartFill } from 'react-icons/bs'
 
 const Navbar = () => {
     return (
@@ -14,6 +15,7 @@ const Navbar = () => {
                         <Link to='/about'>About</Link>
                     </li>
                     <li><Link>Reading</Link></li>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
                 </ul>
             </div>
         </div>

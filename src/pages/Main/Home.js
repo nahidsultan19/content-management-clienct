@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import CourseCard from '../components/CourseCard';
-import { fetchCourseData } from '../redux/thunk/courses/fetchCourses';
+import CourseCard from '../../components/CourseCard';
+import { fetchCourseData } from '../../redux/thunk/courses/fetchCourses';
 
 
 
