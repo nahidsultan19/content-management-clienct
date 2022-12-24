@@ -5,6 +5,8 @@ import About from "../pages/Main/About";
 import AddCourse from "../pages/Dashboard/AddCourse";
 import CourseList from "../pages/Dashboard/CourseList";
 import Home from "../pages/Main/Home";
+import UpdateCourse from "../pages/Dashboard/UpdateCourse";
+import CourseDetail from "../pages/Dashboard/CourseDetail";
 
 const routes = createBrowserRouter([
     {
@@ -24,14 +26,22 @@ const routes = createBrowserRouter([
                 element: <Dashboard />,
                 children: [
                     {
-                        path: 'dashboard',
+                        path: 'course-list',
                         element: <CourseList />
                     },
                     {
                         path: 'add-course',
                         element: <AddCourse />
                     }
+
                 ]
+            },
+            {
+                path: 'update-course/:id',
+                element: <UpdateCourse />
+            }, {
+                path: 'course-detail/:id',
+                element: <CourseDetail />
             }
 
         ]

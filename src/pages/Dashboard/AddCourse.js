@@ -1,12 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import addCourseData from '../../redux/thunk/courses/addCourseData';
 
 const AddCourse = () => {
 
     const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const submit = (data) => {
         const course = {
@@ -15,8 +17,8 @@ const AddCourse = () => {
             price: data.price,
             desc: data.desc
         }
-        dispatch(addCourseData(course))
-        console.log(course);
+        dispatch(addCourseData(course));
+        navigate('/')
     }
 
     return (

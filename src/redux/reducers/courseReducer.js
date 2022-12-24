@@ -1,4 +1,4 @@
-import { ADD_CONTENT, DELETE_CONTENT, GET_CONTENT } from "../actionTypes/actionTypes";
+import { ADD_CONTENT, DELETE_CONTENT, GET_CONTENT, UPDATE_CONTENT } from "../actionTypes/actionTypes";
 
 const initialState = {
     courses: [],
@@ -16,12 +16,17 @@ const courseReducer = (state = initialState, action) => {
                 ...state,
                 courses: [...state.courses, action.payload]
             }
-
+        case UPDATE_CONTENT:
+            return {
+                ...state,
+                courses: state.courses.filter((course) => course._id === action.payload)
+            }
         case DELETE_CONTENT:
             return {
                 ...state,
                 courses: state.courses.filter(course => course._id !== action.payload)
             }
+
         default:
             return state;
     }

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import deleteCourse from '../../redux/thunk/courses/deleteCourse';
 import { fetchCourseData } from '../../redux/thunk/courses/fetchCourses';
+import { BsPencilSquare } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const CourseList = () => {
     const courses = useSelector((state) => state.courses)
@@ -10,6 +12,12 @@ const CourseList = () => {
     useEffect(() => {
         dispatch(fetchCourseData())
     }, [dispatch])
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure, you want to delete?")) {
+            dispatch(deleteCourse(id))
+        }
+    }
 
     return (
         <div className='flex flex-col justify-center items-center h-full w-full'>
@@ -34,7 +42,7 @@ const CourseList = () => {
                             </tr>
                         </thead>
                         <tbody className='text-sm divide-y divide-gray-100'>
-                            {courses.map(({ title, price, _id }) => (
+                            {courses.map(({ title, price, _id, desc, image }) => (
                                 <tr key={_id}>
                                     <td className='p-2'>
                                         <input type='checkbox' className='w-5 h-5' value='id-1' />
@@ -47,10 +55,15 @@ const CourseList = () => {
                                     </td>
 
                                     <td className='p-2'>
-                                        <div className='flex justify-center'>
-                                            <button onClick={() => dispatch(deleteCourse(_id))}>
+                                        <div className='flex justify-center items-center'>
+                                            <Link to={`/update-course/${_id}`} state={{ title, price, _id, desc, image }}>
+                                                <button>
+                                                    <BsPencilSquare className='text-blue-600' />
+                                                </button>
+                                            </Link>
+                                            <button onClick={() => handleDelete(_id)}>
                                                 <svg
-                                                    className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1'
+                                                    className='w-8 h-8 text-red-600 rounded-full hover:bg-gray-100 p-1'
                                                     fill='none'
                                                     stroke='currentColor'
                                                     viewBox='0 0 24 24'
