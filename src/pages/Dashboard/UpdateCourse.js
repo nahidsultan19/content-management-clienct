@@ -24,6 +24,7 @@ const UpdateCourse = () => {
         }
         dispatch(updateCourseData(course))
         navigate('/dashboard/course-list')
+        console.log(course);
 
     }
 

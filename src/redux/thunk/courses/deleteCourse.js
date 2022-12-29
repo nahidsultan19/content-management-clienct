@@ -3,7 +3,7 @@ import { removeCourse } from "../../actionCreators/courseActions";
 
 const deleteCourse = (id) => {
     return async (dispatch, getState) => {
-        const res = await fetch(`https://content-management-server.vercel.app/course/${id}`, {
+        const res = await fetch(`http://localhost:5000/course/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json'
