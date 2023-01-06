@@ -3,7 +3,7 @@ import { addCourse } from "../../actionCreators/courseActions";
 
 const addCourseData = (course) => {
     return async (dispatch, getState) => {
-        const res = await fetch('http://localhost:5000/course', {
+        const res = await fetch('https://content-management-server.vercel.app/course', {
             method: 'POST',
             body: JSON.stringify(course),
             headers: {

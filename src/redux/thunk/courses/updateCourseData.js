@@ -2,7 +2,7 @@ import { updateCourse } from "../../actionCreators/courseActions";
 
 const updateCourseData = (id) => {
     return async (dispatch, getState) => {
-        const res = await fetch(`http://localhost:5000/course/${id}`, {
+        const res = await fetch(`https://content-management-server.vercel.app/course/${id}`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -12,7 +12,7 @@ const updateCourseData = (id) => {
 
         const data = await res.json();
         if (data.acknowledged) {
-            dispatch(updateCourse())
+            dispatch(updateCourse(id))
         }
     }
 }
